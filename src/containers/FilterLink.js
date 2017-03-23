@@ -1,24 +1,16 @@
-import { connect } from 'react-redux'
-import { setVisibilityFilter } from '../actions'
-import Link from '../components/Link'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-const mapStateToProps = (state, ownProps) => ({
-  active: ownProps.filter === state.visibilityFilter
-})
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: () => {
-    dispatch(setVisibilityFilter(ownProps.filter))
-  }
-})
-
-const FilterLink = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Link)
+const FilterLink = ({ children, filter }) => (
+  <Link
+    to={filter === 'all' ? '' : filter}
+   
+  >
+    {children}
+  </Link>
+)
 
 export default FilterLink
-
 
 //it starts a dispatch action SET_VISIBILITY_FILTER
 //It passes filter props to the Link Component, so every one link is going to have a different filter props it passes in the action.
@@ -27,3 +19,9 @@ export default FilterLink
 //The root reducer will use this new field as part of its new state object.
 //Get this new state object and pass all its keys as props to the TodoApp component.
 
+/*
+activeStyle={{
+      textDecoration: 'none',
+      color: 'black'
+    }}
+*/

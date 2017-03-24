@@ -5,10 +5,10 @@ import VisibleTodoList from '../containers/VisibleTodoList'
 
 
 
-const App = ({params}) => (
+const App = () => (
   <div>
     <AddTodo />
-    <VisibleTodoList filter={params.filter || 'all'}/>
+    <VisibleTodoList />
     <Footer />
   </div>
 )
